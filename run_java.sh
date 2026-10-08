@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "Compiling Main.java..."
+javac -cp ".:sqlite-jdbc.jar" Main.java
+echo "Starting Java Swing ATS..."
+java -cp ".:sqlite-jdbc.jar" Main

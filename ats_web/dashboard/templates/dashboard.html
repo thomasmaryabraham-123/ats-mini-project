@@ -1,0 +1,54 @@
+<!-- dashboard/templates/dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Applicant Tracking System - Dashboard</title>
+</head>
+<body>
+    <h1>Applicant Tracking System (ATS)</h1>
+    <p>Live Web Dashboard reading shared <code>ats.db</code> SQLite database.</p>
+    <hr>
+
+    <!-- SECTION 1: CANDIDATE COUNT PER STATUS -->
+    <h2>1. Candidate Count by Status</h2>
+    <table border="1" cellpadding="6" cellspacing="0">
+        <tr bgcolor="#eeeeee">
+            <th>Status</th>
+            <th>Number of Candidates</th>
+        </tr>
+        {% for status, count in status_counts.items %}
+        <tr>
+            <td><b>{{ status }}</b></td>
+            <td>{{ count }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <hr>
+
+    <!-- SECTION 2: ALL CANDIDATES SORTED BY MATCH SCORE -->
+    <h2>2. All Candidates (Highest Match Score First)</h2>
+    <table border="1" cellpadding="6" cellspacing="0">
+        <tr bgcolor="#eeeeee">
+            <th>Candidate Name</th>
+            <th>Job Title</th>
+            <th>Match Score (%)</th>
+            <th>Status</th>
+        </tr>
+        {% for c in candidates %}
+        <tr>
+            <td>{{ c.name }}</td>
+            <td>{{ c.job.title }}</td>
+            <td><b>{{ c.match_score }}%</b></td>
+            <td>{{ c.status }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" align="center">No candidates found in database. Add some from the Java Swing app!</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
