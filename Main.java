@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Main extends JFrame {
 
     // Database connection URL (ats.db will be in current directory)
-    private static final String DB_URL = "jdbc:sqlite:C:/Users/thoma/Downloads/ats_college_mini_project/ats_project/ats.db";
+   private static final String DB_URL = "jdbc:sqlite:ats.db";
 
     // Swing components for Job section
     private JTextField txtJobTitle = new JTextField(12);
